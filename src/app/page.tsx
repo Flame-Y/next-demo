@@ -1,13 +1,11 @@
 import Image from 'next/image'
 import styles from './Home.module.scss'
-// import style2 from '@/styles/test.module.scss'
-import style2 from '../styles/test.module.scss'
 
 export default function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.description}>
-        <p className={style2['test']}>
+        <p>
           Get started by editing&nbsp;
           <code className={styles.code}>src/app/page.tsx</code>
         </p>
