@@ -16,9 +16,16 @@
     "incremental": true,
     "plugins": [
       {
+        "name": "typescript-plugin-css-modules"
+      },
+      {
         "name": "next"
+      },
+      {
+        "name": "prettier"
       }
     ],
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     }
