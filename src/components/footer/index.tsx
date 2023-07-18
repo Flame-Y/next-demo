@@ -1,9 +1,11 @@
 // ./components/footer/index.tsx
-import { FC } from 'react'
-import Image from 'next/image'
+'use client'
 import publicLogo from '@/../public/public_logo.png'
+import Image from 'next/image'
+import Link from 'next/link'
+// import { usePathname } from 'next/navigation'
+import { FC } from 'react'
 import styles from './styles.module.scss'
-import cName from 'classnames'
 
 interface ILink {
   label: string
@@ -37,6 +39,8 @@ export const Footer: FC<IFooterProps> = ({
   siteNumber,
   publicNumber
 }) => {
+  // const pathname = usePathname()
+
   return (
     <div className={styles.footer}>
       <div className={styles.topArea}>
@@ -48,22 +52,18 @@ export const Footer: FC<IFooterProps> = ({
                 <span className={styles.title}>{item.title}</span>
                 <div className={styles.links}>
                   {item.list?.map((_item, _index) => {
-                    return (
-                      <div
-                        className={cName({
-                          [styles.link]: _item.link,
-                          [styles.disabled]: !_item.link
-                        })}
-                        onClick={(): void => {
-                          _item.link &&
-                            window.open(
-                              _item.link,
-                              'blank',
-                              'noopener=yes,noreferrer=yes'
-                            )
-                        }}
+                    // const isActive = pathname.startsWith(_item.link || '')
+                    const isActive = _item.link
+                    return isActive ? (
+                      <Link
+                        className={styles.link}
+                        href={_item.link || ''}
                         key={`link${_index}`}
                       >
+                        {_item.label}
+                      </Link>
+                    ) : (
+                      <div className={styles.disabled} key={`link${_index}`}>
                         {_item.label}
                       </div>
                     )
